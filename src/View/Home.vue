@@ -6,23 +6,24 @@
 
 <script>
 import WeatherCard from "../components/WeatherCard.vue";
+import axios from "axios";
+
 export default {
-  data() {
-    return {
-      wweather: [],
-    };
-  },
+
   components: {
     WeatherCard,
   },
-  mounted(){
-      this.getWeatherData();
+  created() {
+    console.log('sf');
+    this.getWeatherData();
   },
   methods: {
     getWeatherData() {
-      fetch("http://https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+      console.log('ddd');
+      axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+          .then(response => {
+            console.log('sdf',response);
+          })
     },
   },
 };
