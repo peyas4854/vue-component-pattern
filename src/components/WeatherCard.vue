@@ -1,15 +1,11 @@
 <template>
   <div>
-    <div class="card" style="width: 18rem">
+    <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <h5 class="card-title">{{ username }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ companyName }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ email }}</h6>
+        <a href="#" class="card-link">{{ websiteLink }}</a>
       </div>
     </div>
   </div>
@@ -17,8 +13,25 @@
 
 <script>
 export default {
-    
+  props: {
+    username: {
+      type: String,
+      required: true
+    },
+    companyName: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    websiteLink: {
+      type: String,
+      required: true
+    }
+  }
+
 };
 </script>
 
-<style></style>

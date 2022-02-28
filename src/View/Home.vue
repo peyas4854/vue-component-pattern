@@ -1,28 +1,37 @@
 <template>
   <div>
-    <WeatherCard></WeatherCard>
+    <div v-for="(user,i) in users" :key="i">
+      <WeatherCard
+          :username="user.name"
+          :companyName="user.company.name "
+          :email="user.email"
+          :websiteLink="user.website"
+      ></WeatherCard>
+    </div>
   </div>
 </template>
-
 <script>
 import WeatherCard from "../components/WeatherCard.vue";
 import axios from "axios";
-
+// import axios from "axios";
 export default {
-
+  data() {
+    return {
+      users: [],
+    }
+  },
   components: {
     WeatherCard,
   },
   created() {
-    console.log('sf');
     this.getWeatherData();
   },
   methods: {
     getWeatherData() {
-      console.log('ddd');
-      axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      axios.get('https://jsonplaceholder.typicode.com/users')
           .then(response => {
-            console.log('sdf',response);
+            console.log('sdf', response.data);
+            this.users = response.data;
           })
     },
   },
